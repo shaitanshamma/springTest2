@@ -60,8 +60,8 @@ public class ProductController {
 //        return "redirect:/product/list";
 //    }
 
-    @RequestMapping(path = "/showProductById/{min}/{max}", method = RequestMethod.GET)
-    public String showProductById(Model model, @PathVariable(value = "min") int minPrice, @PathVariable(value = "max") int maxPrice) {
+    @RequestMapping(path = "/showProductById/{minPrice}/{maxPrice}", method = RequestMethod.GET)
+    public String showProductById(Model model, @PathVariable(value = "minPrice") int minPrice, @PathVariable(value = "maxPrice") int maxPrice) {
         List<Product> productList = productService.myAwerageProduct(new Integer(minPrice),new Integer(maxPrice));
         model.addAttribute("product", productList);
         return "redirect:/product/list";

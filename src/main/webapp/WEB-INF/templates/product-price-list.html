@@ -12,17 +12,33 @@
     <link type="text/css" rel="stylesheet" th:href="@{/resources/css/main.css}"/>
 </head>
 
+<div class="fluid-container">
+    <nav>
+        <div th:replace="~{my-menu :: mymenu(Index)}">
+        </div>
+    </nav>
+    <!--<nav>-->
+    <!--<div th:replace="~{my-menu :: mymenu}">-->
+    <!--</div>-->
+    <!--</nav>-->
+    <div class="visible-md" style="height:80px;"> </div>
+</div>
+
 <html>
     <body>
         <form th:action="@{/product/price}" th:object="${productPriceList}"  method="post">
-            Min price: <input type="text" th:field="*{price}"/>
+<!--            Min price: <input type="text" th:field="*{price}"/>-->
+<!--            <br>-->
+<!--            Max price: <input type="text" th:field="*{price}"/>-->
+<!--            <br>-->
+            Min price: <input type="text" th:attr="entryIndex=${minPrice}"/>
             <br>
-            Max price: <input type="text" th:field="*{price}"/>
+            Max price: <input type="text" th:attr="entryIndex=${maxPrice}"/>
             <br>
 
             <td>
 <!--                <button class="btn btn-primary infoBtn" th:attr="entryIndex=${price}">Show</button>-->
-                <a class="btn btn-danger" th:href="@{'/showProductById/' + ${min} + '/' + ${max}}" role="button">Show</a>
+                <a class="btn btn-danger" th:href="@{'/showProductById/' + ${minPrice} + '/' + ${maxPrice}}" role="button">Show</a>
             </td>
 <!--            <div class="submit">-->
 <!--                <button name="addProduct" type="submit">Filtering product</button>-->
