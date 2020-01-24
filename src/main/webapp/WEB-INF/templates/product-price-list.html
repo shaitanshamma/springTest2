@@ -26,14 +26,23 @@
 
 <html>
     <body>
-        <form th:action="@{/product/add}" th:object="${productAdd}"  method="post">
-            Title: <input type="text" th:field="*{title}"/>
+        <form th:action="@{/product/price}" th:object="${productPriceList}"  method="post">
+<!--            Min price: <input type="text" th:field="*{price}"/>-->
+<!--            <br>-->
+<!--            Max price: <input type="text" th:field="*{price}"/>-->
+<!--            <br>-->
+            Min price: <input type="text" th:attr="entryIndex=${minPrice}"/>
             <br>
-            Price: <input type="text" th:field="*{price}"/>
+            Max price: <input type="text" th:attr="entryIndex=${maxPrice}"/>
             <br>
-            <div class="submit">
-                <button class="btn btn-danger" name="addProduct" type="submit">Add product</button>
-            </div>
+
+            <td>
+<!--                <button class="btn btn-primary infoBtn" th:attr="entryIndex=${price}">Show</button>-->
+                <a class="btn btn-danger" th:href="@{'/showProductById/' + ${minPrice} + '/' + ${maxPrice}}" role="button">Show</a>
+            </td>
+<!--            <div class="submit">-->
+<!--                <button name="addProduct" type="submit">Filtering product</button>-->
+<!--            </div>-->
 
         </form>
     </body>
