@@ -53,17 +53,12 @@ public class ProductController {
         model.addAttribute("productPriceList", product);
         return "product-price-list";
     }
-//    @RequestMapping(value = "/product/price", method = RequestMethod.POST)
-//    public String showProductListInPrice(Model model, int minPrice, int maxPrice) {
-//        List<Product> productList = productService.myAwerageProduct(minPrice,maxPrice);
-//        model.addAttribute("productPriceList", productList);
-//        return "redirect:/product/list";
-//    }
 
-    @RequestMapping(path = "/showProductById/{minPrice}/{maxPrice}", method = RequestMethod.GET)
-    public String showProductById(Model model, @PathVariable(value = "minPrice") int minPrice, @PathVariable(value = "maxPrice") int maxPrice) {
+    @RequestMapping(path = "/showProductById", method = RequestMethod.GET)
+    public String showProductById(Model model, @RequestParam(value = "minPrice") int minPrice, @RequestParam(value = "maxPrice") int maxPrice) {
         List<Product> productList = productService.myAwerageProduct(new Integer(minPrice),new Integer(maxPrice));
         model.addAttribute("product", productList);
-        return "redirect:/product/list";
+        System.out.println(productList);
+        return "product-list";
     }
 }
