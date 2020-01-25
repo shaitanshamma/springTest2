@@ -4,10 +4,7 @@ package ru.geekbrains.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.entities.Product;
 import ru.geekbrains.services.ProductService;
 
@@ -54,11 +51,11 @@ public class ProductController {
         return "product-price-list";
     }
 
-    @RequestMapping(path = "/showProductById", method = RequestMethod.GET)
+    @GetMapping(path = "/showProductById")
     public String showProductById(Model model, @RequestParam(value = "minPrice") int minPrice, @RequestParam(value = "maxPrice") int maxPrice) {
         List<Product> productList = productService.myAwerageProduct(new Integer(minPrice),new Integer(maxPrice));
-        model.addAttribute("product", productList);
         System.out.println(productList);
+        model.addAttribute("productList", productList);
         return "product-list";
     }
 }
