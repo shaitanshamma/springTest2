@@ -15,5 +15,4 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, L
     //    @Query("select p from Product p where p.price > 100")
 //    List<Product> myProductByPrice();
     List<Product> findByPriceBetween(int min, int max);
-    Page<Product> findAll();
 }
